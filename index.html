@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apex Peak Roofing Co. | Austin & Central Texas Roofing Experts</title>
+  <meta name="description" content="High-ticket residential and commercial roofing solutions in Austin, TX. Book inspections, reserve project dates with deposits, and schedule maintenance online." />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Whop SDK Telemetry Script -->
+  <script>
+    window.whop = window.whop || {
+      track: function(eventName, data) {
+        console.log(`[Whop Telemetry] Event: ${eventName}`, data);
+      }
+    };
+
+    function trackCheckout(planName, price, planId) {
+      if (window.whop && typeof window.whop.track === 'function') {
+        window.whop.track('deposit_started', {
+          product_name: planName,
+          price: price,
+          plan_id: planId,
+          timestamp: new Date().toISOString()
+        });
+      }
+    }
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      const statusBox = document.getElementById('form-status');
+      
+      const formData = {
+        name: form.fullName.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        address: form.address.value,
+        roofAge: form.roofAge.value,
+        serviceType: form.serviceType.value,
+        notes: form.notes.value
+      };
+
+      if (window.whop && typeof window.whop.track === 'function') {
+        window.whop.track('estimate_requested', formData);
+      }
+
+      form.reset();
+      statusBox.classList.remove('hidden');
+      setTimeout(() => {
+        statusBox.classList.add('hidden');
+      }, 6000);
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-amber-500 selection:text-white">
+
+  <!-- Fixed Sticky Header Navigation -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-lg bg-slate-900 text-amber-500 flex items-center justify-center font-black text-xl shadow-inner">
+          A
+        </div>
+        <div>
+          <span class="text-xl font-black tracking-tight text-slate-900">APEX PEAK</span>
+          <span class="text-xl font-bold tracking-tight text-amber-600 ml-1">ROOFING CO.</span>
+        </div>
+      </div>
+      
+      <div class="flex items-center space-x-4">
+        <a href="#services" class="hidden md:inline-flex text-sm font-semibold text-slate-700 hover:text-amber-600 transition">Services</a>
+        <a href="#pricing" class="hidden md:inline-flex text-sm font-semibold text-slate-700 hover:text-amber-600 transition">Pricing</a>
+        <a href="#estimate" class="hidden md:inline-flex text-sm font-semibold text-slate-700 hover:text-amber-600 transition">Request Estimate</a>
+        <a href="tel:5125550199" class="inline-flex items-center space-x-2 bg-amber-600 hover:bg-amber-700 text-white font-bold px-4 py-2.5 rounded-lg shadow-sm hover:shadow transition">
+          <i data-lucide="phone" class="w-4 h-4"></i>
+          <span>Call (512) 555-0199</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section with Metro Trust Badge -->
+  <section class="relative pt-36 pb-20 md:pt-44 md:pb-28 bg-slate-900 text-white overflow-hidden">
+    <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#d97706_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center space-x-2 bg-slate-800/90 border border-slate-700 px-4 py-1.5 rounded-full text-amber-400 text-xs sm:text-sm font-semibold mb-6 shadow-sm">
+        <i data-lucide="shield-check" class="w-4 h-4 text-amber-400"></i>
+        <span>SERVING THE AUSTIN & CENTRAL TEXAS METRO</span>
+      </div>
+      
+      <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-tight uppercase">
+        Reliable Roofing Solutions With <br class="hidden sm:inline" />
+        <span class="text-amber-500">Clear Upfront Pricing</span>
+      </h1>
+      
+      <p class="mt-6 text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+        Licensed, bonded, and insured exterior contractors. Eliminate project scheduling friction with flat-rate diagnostic scans, reserved crew deposits, and zero surprise fees.
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#pricing" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-bold text-slate-950 bg-amber-500 hover:bg-amber-400 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5">
+          View Upfront Pricing
+          <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+        </a>
+        <a href="#estimate" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-xl transition">
+          Free On-Site Estimate
+        </a>
+      </div>
+
+      <!-- Trust Pillars -->
+      <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 text-slate-300 text-xs sm:text-sm font-medium border-t border-slate-800 pt-8">
+        <div class="flex items-center justify-center space-x-2">
+          <i data-lucide="badge-check" class="w-5 h-5 text-amber-500"></i>
+          <span>TX Licensed & Insured</span>
+        </div>
+        <div class="flex items-center justify-center space-x-2">
+          <i data-lucide="award" class="w-5 h-5 text-amber-500"></i>
+          <span>Lifetime Workmanship</span>
+        </div>
+        <div class="flex items-center justify-center space-x-2">
+          <i data-lucide="clock" class="w-5 h-5 text-amber-500"></i>
+          <span>24/7 Leak Response</span>
+        </div>
+        <div class="flex items-center justify-center space-x-2">
+          <i data-lucide="star" class="w-5 h-5 text-amber-500"></i>
+          <span>5-Star Austin Rated</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Cards Section -->
+  <section id="pricing" class="pt-28 pb-24 bg-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Upfront Contractor Packages</h2>
+        <p class="mt-4 text-lg text-slate-600">
+          Transparent, fixed diagnostic and retainer fees powered by verified Whop checkout.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Package 1: Inspection -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 flex flex-col justify-between hover:shadow-md transition">
+          <div>
+            <span class="text-xs font-bold tracking-wider uppercase text-amber-600 bg-amber-50 px-3 py-1 rounded-full">Diagnostic</span>
+            <h3 class="mt-4 text-2xl font-bold text-slate-900">Drone & Attic Inspection</h3>
+            <div class="mt-4 flex items-baseline">
+              <span class="text-5xl font-extrabold text-slate-900">$149</span>
+              <span class="ml-2 text-sm font-semibold text-slate-500">one-time</span>
+            </div>
+            <p class="mt-4 text-sm text-slate-600 leading-relaxed">
+              Complete high-resolution aerial and interior survey without walking on fragile shingles or voiding manufacturer warranties.
+            </p>
+            <ul class="mt-6 space-y-3 text-sm text-slate-700">
+              <li class="flex items-start">
+                <i data-lucide="check" class="w-5 h-5 text-amber-600 mr-2 shrink-0"></i>
+                <span>40-point 4K drone aerial shingle scan</span>
+              </li>
+              <li class="flex items-start">
+                <i data-lucide="check" class="w-5 h-5 text-amber-600 mr-2 shrink-0"></i>
+                <span>Attic moisture, rafter & thermal analysis</span>
+              </li>
+              <li class="flex items-start">
+                <i data-lucide="check" class="w-5 h-5 text-amber-600 mr-2 shrink-0"></i>
+                <span>Certified storm damage insurance report</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-8">
+            <a href="https://whop.com/checkout/plan_YMcppY60biigd" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               onclick="trackCheckout('Drone & Attic Inspection', 149, 'plan_YMcppY60biigd')"
+               class="w-full inline-flex items-center justify-center px-6 py-3.5 text-base font-bold text-white bg-slate-900 hover:bg-slate-800 rounded-xl shadow transition">
+              Book Inspection
+              <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+            </a>
+            <p class="mt-3 text-xs text-center font-medium text-slate-700">
+              Apple Pay, Google Pay & Card options
+            </p>
+          </div>
+        </div>
+
+        <!-- Package 2: Project Deposit (Featured) -->
+        <div class="bg-white rounded-2xl border-2 border-amber-500 shadow-xl p-8 flex flex-col justify-between relative transform md:-translate-y-2">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-amber-500 text-slate-950 text-xs font-black tracking-wider uppercase py-1 px-4 rounded-full shadow">
+            Most Popular
+          </div>
+          <div>
+            <span class="text-xs font-bold tracking-wider uppercase text-amber-600 bg-amber-50 px-3 py-1 rounded-full">Project Retainer</span>
+            <h3 class="mt-4 text-2xl font-bold text-slate-900">Roof Replacement Deposit</h3>
+            <div class="mt-4 flex items-baseline">
+              <span class="text-5xl font-extrabold text-slate-900">$500</span>
+              <span class="ml-2 text-sm font-semibold text-slate-500">project retainer</span>
+            </div>
+            <p class="mt-4 text-sm text-slate-600 leading-relaxed">
+              Secures your preferred installation date on our calendar and initiates material procurement with supplier dispatch.
+            </p>
+            <ul class="mt-6 space-y-3 text-sm text-slate-700">
+              <li class="flex items-start">
+                <i data-lucide="check" class="w-5 h-5 text-amber-600 mr-2 shrink-0"></i>
+                <span>Locks in dedicated crew installation schedule</span>
+              </li>
+              <li class="flex items-start">
+                <i data-lucide="check" class="w-5 h-5 text-amber-600 mr-2 shrink-0"></i>
+                <span>Wholesale material order confirmation</span>
+              </li>
+              <li class="flex items-start">
+                <i data-lucide="check" class="w-5 h-5 text-amber-600 mr-2 shrink-0"></i>
+                <span>Remaining balance invoiced on milestone inspection</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-8">
+            <a href="https://whop.com/checkout/plan_21WGXfgkA7UbO" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               onclick="trackCheckout('Roof Replacement Deposit', 500, 'plan_21WGXfgkA7UbO')"
+               class="w-full inline-flex items-center justify-center px-6 py-3.5 text-base font-bold text-slate-950 bg-amber-500 hover:bg-amber-400 rounded-xl shadow-md hover:shadow-lg transition">
+              Pay Project Deposit
+              <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+            </a>
+            <p class="mt-3 text-xs text-center font-medium text-slate-700">
+              Apple Pay, Google Pay & Card options
+            </p>
+          </div>
+        </div>
+
+        <!-- Package 3: Tune-Up -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 flex flex-col justify-between hover:shadow-md transition">
+          <div>
+            <span class="text-xs font-bold tracking-wider uppercase text-amber-600 bg-amber-50 px-3 py-1 rounded-full">Maintenance</span>
+            <h3 class="mt-4 text-2xl font-bold text-slate-900">Gutter & Flashing Tune-Up</h3>
+            <div class="mt-4 flex items-baseline">
+              <span class="text-5xl font-extrabold text-slate-900">$299</span>
+              <span class="ml-2 text-sm font-semibold text-slate-500">one-time</span>
+            </div>
+            <p class="mt-4 text-sm text-slate-600 leading-relaxed">
+              Essential preventative maintenance service to stop leaks, clear runoff channels, and reinforce roof flashings.
+            </p>
+            <ul class="mt-6 space-y-3 text-sm text-slate-700">
+              <li class="flex items-start">
+                <i data-lucide="check" class="w-5 h-5 text-amber-600 mr-2 shrink-0"></i>
+                <span>All valley and chimney flashing resealing</span>
+              </li>
+              <li class="flex items-start">
+                <i data-lucide="check" class="w-5 h-5 text-amber-600 mr-2 shrink-0"></i>
+                <span>Up to 50 linear ft gutter and downspout cleanout</span>
+              </li>
+              <li class="flex items-start">
+                <i data-lucide="check" class="w-5 h-5 text-amber-600 mr-2 shrink-0"></i>
+                <span>Complete fascia and gutter clip integrity test</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-8">
+            <a href="https://whop.com/checkout/plan_YMcppY60biigd" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               onclick="trackCheckout('Gutter & Flashing Tune-Up', 299, 'plan_tuneup')"
+               class="w-full inline-flex items-center justify-center px-6 py-3.5 text-base font-bold text-white bg-slate-900 hover:bg-slate-800 rounded-xl shadow transition">
+              Order Tune-Up
+              <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+            </a>
+            <p class="mt-3 text-xs text-center font-medium text-slate-700">
+              Apple Pay, Google Pay & Card options
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="services" class="py-20 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">How a Roof Job Works With Us</h2>
+        <p class="mt-4 text-base sm:text-lg text-slate-400">
+          From first survey to final cleanup, our team follows a rigid quality assurance process.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="bg-slate-800/60 p-6 rounded-xl border border-slate-700/60">
+          <div class="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-lg flex items-center justify-center font-bold text-lg mb-4">
+            01
+          </div>
+          <h4 class="text-xl font-bold text-white mb-2">Inspection & Scope</h4>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            We inspect drone images and attic rafters to create an itemized statement of work.
+          </p>
+        </div>
+
+        <div class="bg-slate-800/60 p-6 rounded-xl border border-slate-700/60">
+          <div class="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-lg flex items-center justify-center font-bold text-lg mb-4">
+            02
+          </div>
+          <h4 class="text-xl font-bold text-white mb-2">Retainer & Schedule</h4>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Place your deposit securely to confirm the crew start date and deliver materials.
+          </p>
+        </div>
+
+        <div class="bg-slate-800/60 p-6 rounded-xl border border-slate-700/60">
+          <div class="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-lg flex items-center justify-center font-bold text-lg mb-4">
+            03
+          </div>
+          <h4 class="text-xl font-bold text-white mb-2">Tear-Off & Install</h4>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Most residential projects are completely finished and swept with magnetic rakes in 1-2 days.
+          </p>
+        </div>
+
+        <div class="bg-slate-800/60 p-6 rounded-xl border border-slate-700/60">
+          <div class="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-lg flex items-center justify-center font-bold text-lg mb-4">
+            04
+          </div>
+          <h4 class="text-xl font-bold text-white mb-2">Final Walkthrough</h4>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            You only sign off and pay the remaining balance once you are 100% satisfied with the work.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lead Intake Form Section -->
+  <section id="estimate" class="py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Request an On-Site Estimate</h2>
+        <p class="mt-3 text-slate-600">
+          Prefer an in-person assessment? Fill out the details below and an Austin project manager will reach out within 2 hours.
+        </p>
+      </div>
+
+      <div id="form-status" class="hidden mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-semibold text-center">
+        Thank you! Your estimate request has been logged. Our dispatch team is reviewing your address.
+      </div>
+
+      <form onsubmit="handleFormSubmit(event)" class="space-y-6 bg-slate-50 p-8 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Full Name</label>
+            <input type="text" name="fullName" required placeholder="John Doe" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none text-slate-900 bg-white" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Phone Number</label>
+            <input type="tel" name="phone" required placeholder="(512) 000-0000" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none text-slate-900 bg-white" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Email Address</label>
+            <input type="email" name="email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none text-slate-900 bg-white" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Property Address</label>
+            <input type="text" name="address" required placeholder="1234 Congress Ave, Austin, TX" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none text-slate-900 bg-white" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Approximate Roof Age</label>
+            <select name="roofAge" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none text-slate-900 bg-white">
+              <option value="under_5">Less than 5 years</option>
+              <option value="5_10">5 – 10 years</option>
+              <option value="10_20" selected>10 – 20 years</option>
+              <option value="20_plus">20+ years / Unknown</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Primary Need</label>
+            <select name="serviceType" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none text-slate-900 bg-white">
+              <option value="replacement">Full Roof Replacement</option>
+              <option value="storm_repair">Storm / Hail Damage Inspection</option>
+              <option value="active_leak">Active Leak Emergency</option>
+              <option value="tuneup">Flashing & Gutter Maintenance</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Additional Project Details</label>
+          <textarea name="notes" rows="3" placeholder="Tell us about leaks, shingle blow-offs, or insurance claim details..." class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none text-slate-900 bg-white"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-4 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition">
+          Submit Estimate Request
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="text-center md:text-left">
+        <span class="text-lg font-bold text-white">APEX PEAK ROOFING CO.</span>
+        <p class="text-xs text-slate-500 mt-1">Austin & Central Texas Commercial & Residential Roofing Contractor</p>
+      </div>
+      <div class="text-xs text-slate-500 text-center md:text-right">
+        <p>&copy; 2026 Apex Peak Roofing. All rights reserved.</p>
+        <p class="mt-1">Payments secured and powered by Whop Payments.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
